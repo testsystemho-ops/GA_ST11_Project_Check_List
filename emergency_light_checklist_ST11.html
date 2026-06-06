@@ -1,0 +1,1211 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Emergency Light Checklist — MAKRO ST.11</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ══════════════════════════════════════════
+   THEME SYSTEM — 3 themes
+══════════════════════════════════════════ */
+:root {
+  --font-sans: 'Noto Sans Thai', 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  --radius: 10px;
+  --radius-sm: 6px;
+  --radius-pill: 50px;
+  --trans: all 0.18s ease;
+}
+
+/* THEME: WHITE (default) */
+[data-theme="white"] {
+  --bg: #f8fafc;
+  --bg2: #f1f5f9;
+  --surface: #ffffff;
+  --surface2: #f8fafc;
+  --surface3: #f1f5f9;
+  --border: #e2e8f0;
+  --border2: #cbd5e1;
+  --accent: #2563eb;
+  --accent-light: #eff6ff;
+  --accent-text: #1d4ed8;
+  --text: #0f172a;
+  --text2: #475569;
+  --text3: #94a3b8;
+  --green: #059669;
+  --green-bg: #ecfdf5;
+  --green-border: #a7f3d0;
+  --red: #dc2626;
+  --red-bg: #fef2f2;
+  --red-border: #fecaca;
+  --yellow: #d97706;
+  --yellow-bg: #fffbeb;
+  --yellow-border: #fde68a;
+  --shadow: 0 1px 3px rgba(0,0,0,0.08), 0 4px 16px rgba(0,0,0,0.04);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.1), 0 2px 4px rgba(0,0,0,0.06);
+  --shadow-lg: 0 10px 40px rgba(0,0,0,0.12);
+  --header-bg: #ffffff;
+  --header-border: #e2e8f0;
+  --progress-track: #e2e8f0;
+}
+
+/* THEME: DARK */
+[data-theme="dark"] {
+  --bg: #0f172a;
+  --bg2: #1e293b;
+  --surface: #1e293b;
+  --surface2: #0f172a;
+  --surface3: #334155;
+  --border: rgba(148,163,184,0.12);
+  --border2: rgba(148,163,184,0.22);
+  --accent: #3b82f6;
+  --accent-light: rgba(59,130,246,0.1);
+  --accent-text: #60a5fa;
+  --text: #f1f5f9;
+  --text2: #94a3b8;
+  --text3: #64748b;
+  --green: #34d399;
+  --green-bg: rgba(52,211,153,0.1);
+  --green-border: rgba(52,211,153,0.2);
+  --red: #f87171;
+  --red-bg: rgba(248,113,113,0.1);
+  --red-border: rgba(248,113,113,0.2);
+  --yellow: #fbbf24;
+  --yellow-bg: rgba(251,191,36,0.1);
+  --yellow-border: rgba(251,191,36,0.2);
+  --shadow: 0 2px 8px rgba(0,0,0,0.4);
+  --shadow-md: 0 4px 16px rgba(0,0,0,0.5);
+  --shadow-lg: 0 8px 32px rgba(0,0,0,0.6);
+  --header-bg: #1e293b;
+  --header-border: rgba(148,163,184,0.12);
+  --progress-track: #334155;
+}
+
+/* THEME: BLUE */
+[data-theme="blue"] {
+  --bg: #f0f7ff;
+  --bg2: #e0efff;
+  --surface: #ffffff;
+  --surface2: #f0f7ff;
+  --surface3: #dbeafe;
+  --border: #bfdbfe;
+  --border2: #93c5fd;
+  --accent: #1d4ed8;
+  --accent-light: #eff6ff;
+  --accent-text: #1e40af;
+  --text: #1e3a5f;
+  --text2: #3b6ea8;
+  --text3: #7ea8d8;
+  --green: #059669;
+  --green-bg: #ecfdf5;
+  --green-border: #a7f3d0;
+  --red: #dc2626;
+  --red-bg: #fef2f2;
+  --red-border: #fecaca;
+  --yellow: #d97706;
+  --yellow-bg: #fffbeb;
+  --yellow-border: #fde68a;
+  --shadow: 0 1px 4px rgba(29,78,216,0.08), 0 4px 16px rgba(29,78,216,0.06);
+  --shadow-md: 0 4px 16px rgba(29,78,216,0.12);
+  --shadow-lg: 0 10px 40px rgba(29,78,216,0.15);
+  --header-bg: #1d4ed8;
+  --header-border: #1e40af;
+  --progress-track: #bfdbfe;
+}
+
+/* ══════════════════════════════════════════ */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-sans);
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  transition: background 0.3s, color 0.3s;
+}
+
+/* ── HEADER ── */
+.app-header {
+  background: var(--header-bg);
+  border-bottom: 1px solid var(--header-border);
+  padding: 0 20px;
+  position: sticky; top: 0; z-index: 200;
+  box-shadow: var(--shadow);
+  transition: background 0.3s, border-color 0.3s;
+}
+
+.header-inner {
+  max-width: 1100px; margin: 0 auto;
+  height: 60px;
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+}
+
+.brand {
+  display: flex; align-items: center; gap: 10px;
+}
+
+.brand-icon {
+  width: 36px; height: 36px;
+  background: var(--accent);
+  border-radius: 9px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px; flex-shrink: 0;
+}
+
+[data-theme="blue"] .brand-icon { background: rgba(255,255,255,0.2); }
+
+.brand-title {
+  font-size: 13px; font-weight: 700;
+  color: var(--text); letter-spacing: 0.02em;
+  line-height: 1.2;
+}
+[data-theme="blue"] .brand-title { color: #fff; }
+
+.brand-sub {
+  font-size: 10px; color: var(--text3);
+  font-family: var(--font-mono); letter-spacing: 0.06em;
+}
+[data-theme="blue"] .brand-sub { color: rgba(255,255,255,0.7); }
+
+.header-right {
+  display: flex; align-items: center; gap: 8px;
+}
+
+/* ── THEME SWITCHER ── */
+.theme-switcher {
+  display: flex; gap: 4px;
+  background: var(--surface3);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-pill);
+  padding: 3px;
+}
+
+[data-theme="blue"] .theme-switcher {
+  background: rgba(255,255,255,0.15);
+  border-color: rgba(255,255,255,0.25);
+}
+
+.theme-dot {
+  width: 24px; height: 24px; border-radius: 50%;
+  border: 2px solid transparent;
+  cursor: pointer; transition: var(--trans);
+  position: relative;
+}
+.theme-dot:hover { transform: scale(1.15); }
+.theme-dot.active { border-color: var(--accent); box-shadow: 0 0 0 2px var(--accent-light); }
+[data-theme="blue"] .theme-dot.active { border-color: #fff; box-shadow: 0 0 0 2px rgba(255,255,255,0.3); }
+.td-white { background: #f8fafc; box-shadow: inset 0 0 0 1px #cbd5e1; }
+.td-dark  { background: #0f172a; }
+.td-blue  { background: linear-gradient(135deg, #1d4ed8, #60a5fa); }
+
+/* ── ACTION BUTTONS in header ── */
+.hdr-btn {
+  display: flex; align-items: center; gap: 5px;
+  padding: 7px 12px; border-radius: var(--radius-sm);
+  font-family: var(--font-sans); font-size: 12px; font-weight: 600;
+  cursor: pointer; border: 1px solid var(--border);
+  background: var(--surface); color: var(--text2);
+  transition: var(--trans); white-space: nowrap;
+}
+.hdr-btn:hover { background: var(--surface3); color: var(--text); }
+[data-theme="blue"] .hdr-btn {
+  background: rgba(255,255,255,0.15); border-color: rgba(255,255,255,0.25);
+  color: rgba(255,255,255,0.9);
+}
+[data-theme="blue"] .hdr-btn:hover { background: rgba(255,255,255,0.25); }
+
+/* ── MAIN BODY ── */
+.page-wrap {
+  max-width: 1100px; margin: 0 auto; padding: 0 16px 40px;
+}
+
+/* ── FORM CARD ── */
+.form-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+  margin: 16px 0;
+  box-shadow: var(--shadow);
+}
+
+.form-card-title {
+  font-size: 11px; font-weight: 700; color: var(--text3);
+  text-transform: uppercase; letter-spacing: 0.1em;
+  font-family: var(--font-mono);
+  margin-bottom: 14px;
+  display: flex; align-items: center; gap: 8px;
+}
+.form-card-title::before { content: ''; width: 3px; height: 14px; background: var(--accent); border-radius: 2px; }
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 12px;
+}
+
+.form-group label {
+  display: block; font-size: 11px; font-weight: 600;
+  color: var(--text3); margin-bottom: 5px; letter-spacing: 0.06em;
+}
+
+.form-group input, .form-group select {
+  width: 100%; padding: 8px 11px;
+  background: var(--surface2); border: 1px solid var(--border);
+  border-radius: var(--radius-sm); color: var(--text);
+  font-family: var(--font-sans); font-size: 13px;
+  transition: var(--trans); -webkit-appearance: none;
+}
+.form-group input:focus, .form-group select:focus {
+  outline: none; border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-light);
+}
+.form-group select option { background: var(--surface); }
+
+/* ── STATS ROW ── */
+.stats-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px; margin: 0 0 12px;
+}
+
+.stat-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 12px 14px;
+  display: flex; align-items: center; gap: 10px;
+  box-shadow: var(--shadow);
+  transition: var(--trans);
+}
+
+.stat-icon {
+  width: 36px; height: 36px; border-radius: 9px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px; flex-shrink: 0;
+}
+.si-total { background: var(--accent-light); }
+.si-yes   { background: var(--green-bg); }
+.si-no    { background: var(--red-bg); }
+.si-pend  { background: var(--yellow-bg); }
+
+.stat-body { min-width: 0; }
+.stat-num {
+  font-size: 20px; font-weight: 700; line-height: 1;
+  font-family: var(--font-mono);
+}
+.sn-total { color: var(--accent); }
+.sn-yes   { color: var(--green); }
+.sn-no    { color: var(--red); }
+.sn-pend  { color: var(--yellow); }
+
+.stat-lbl { font-size: 11px; color: var(--text3); margin-top: 2px; }
+
+/* ── PROGRESS ── */
+.progress-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 14px 18px;
+  margin-bottom: 12px;
+  box-shadow: var(--shadow);
+  display: flex; align-items: center; gap: 14px;
+}
+
+.progress-label { font-size: 12px; font-weight: 600; color: var(--text2); white-space: nowrap; }
+
+.progress-bar {
+  flex: 1; height: 8px; background: var(--progress-track);
+  border-radius: 4px; overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--green), #6ee7b7);
+  border-radius: 4px;
+  transition: width 0.5s cubic-bezier(0.34,1.56,0.64,1);
+}
+
+.progress-pct {
+  font-family: var(--font-mono); font-size: 13px;
+  font-weight: 700; color: var(--green); white-space: nowrap; min-width: 52px; text-align: right;
+}
+
+/* ── FILTER + ACTION BAR ── */
+.toolbar {
+  display: flex; align-items: center; gap: 8px;
+  margin-bottom: 12px; flex-wrap: wrap;
+}
+
+.filter-group {
+  display: flex; gap: 4px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-pill);
+  padding: 3px; box-shadow: var(--shadow);
+}
+
+.filter-btn {
+  padding: 5px 14px; border-radius: var(--radius-pill);
+  font-size: 12px; font-weight: 600; border: none;
+  background: transparent; color: var(--text3); cursor: pointer;
+  transition: var(--trans); white-space: nowrap; font-family: var(--font-sans);
+}
+.filter-btn.active { background: var(--accent); color: #fff; }
+.filter-btn:hover:not(.active) { color: var(--text); }
+
+/* ── ACTION BUTTONS ── */
+.btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 9px 18px; border-radius: var(--radius-sm);
+  font-family: var(--font-sans); font-size: 13px; font-weight: 600;
+  cursor: pointer; border: none; transition: var(--trans);
+  white-space: nowrap; text-decoration: none;
+}
+.btn-save {
+  background: var(--accent); color: #fff;
+  box-shadow: 0 2px 8px rgba(37,99,235,0.3);
+}
+.btn-save:hover { opacity: 0.9; transform: translateY(-1px); box-shadow: 0 4px 16px rgba(37,99,235,0.35); }
+
+.btn-pdf {
+  background: var(--red); color: #fff;
+  box-shadow: 0 2px 8px rgba(220,38,38,0.25);
+}
+.btn-pdf:hover { opacity: 0.9; transform: translateY(-1px); }
+
+.btn-reset {
+  background: var(--surface); color: var(--text2);
+  border: 1px solid var(--border);
+}
+.btn-reset:hover { background: var(--surface3); color: var(--text); }
+
+/* ── ITEM CARD ── */
+.page-section-label {
+  font-size: 10px; font-weight: 700; color: var(--text3);
+  text-transform: uppercase; letter-spacing: 0.12em;
+  font-family: var(--font-mono);
+  display: flex; align-items: center; gap: 8px;
+  padding: 14px 0 6px;
+}
+.page-section-label::after {
+  content: ''; flex: 1; height: 1px; background: var(--border);
+}
+
+.item-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  margin-bottom: 6px;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  transition: box-shadow 0.2s, border-color 0.2s;
+  animation: slideIn 0.2s ease both;
+}
+.item-card:hover { box-shadow: var(--shadow-md); border-color: var(--border2); }
+
+.item-card.s-yes { border-left: 3px solid var(--green); }
+.item-card.s-no  { border-left: 3px solid var(--red); }
+.item-card.s-pending { border-left: 3px solid var(--border2); }
+
+@keyframes slideIn {
+  from { opacity:0; transform:translateY(6px); }
+  to   { opacity:1; transform:translateY(0); }
+}
+
+.item-row {
+  display: flex; align-items: center; gap: 10px;
+  padding: 10px 14px;
+}
+
+.item-seq {
+  width: 28px; height: 28px; flex-shrink: 0;
+  background: var(--surface3);
+  border-radius: 7px;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-mono); font-size: 11px; font-weight: 700;
+  color: var(--text3);
+}
+
+.item-body { flex: 1; min-width: 0; }
+
+.item-id-row { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+.item-id {
+  font-family: var(--font-mono); font-size: 12px; font-weight: 700;
+  color: var(--accent-text);
+}
+.item-task { font-size: 11px; color: var(--text2); margin-top: 2px; line-height: 1.4; }
+.item-loc  { font-size: 11px; color: var(--text3); margin-top: 3px; }
+.item-loc::before { content: '📍 '; font-size: 10px; }
+
+.item-controls {
+  display: flex; align-items: center; gap: 6px; flex-shrink: 0;
+}
+
+.status-btn {
+  padding: 5px 13px; border-radius: var(--radius-pill);
+  font-size: 12px; font-weight: 700; cursor: pointer;
+  border: 1.5px solid; transition: var(--trans);
+  font-family: var(--font-sans); min-width: 50px; text-align: center;
+  -webkit-tap-highlight-color: transparent;
+}
+.sb-yes { border-color: var(--green); color: var(--green); background: transparent; }
+.sb-yes.on, .sb-yes:active { background: var(--green); color: #fff; box-shadow: 0 2px 10px rgba(5,150,105,0.35); }
+
+.sb-no  { border-color: var(--red); color: var(--red); background: transparent; }
+.sb-no.on, .sb-no:active  { background: var(--red);  color: #fff; box-shadow: 0 2px 10px rgba(220,38,38,0.3); }
+
+.expand-btn {
+  width: 28px; height: 28px; border-radius: var(--radius-sm);
+  background: var(--surface2); border: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; color: var(--text3); font-size: 11px;
+  transition: var(--trans); flex-shrink: 0;
+}
+.expand-btn:hover { background: var(--surface3); color: var(--text); }
+.expand-btn.open { background: var(--accent-light); border-color: var(--accent); color: var(--accent); }
+
+/* ── EXPAND AREA ── */
+.item-expand {
+  display: none; padding: 0 14px 12px;
+  gap: 8px; flex-direction: column;
+}
+.item-expand.open { display: flex; }
+
+.expand-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.exp-label { font-size: 11px; font-weight: 600; color: var(--text3); white-space: nowrap; font-family: var(--font-mono); }
+
+.volt-input {
+  width: 88px; padding: 5px 10px;
+  background: var(--surface2); border: 1px solid var(--border);
+  border-radius: var(--radius-sm); color: var(--text);
+  font-family: var(--font-mono); font-size: 12px;
+  transition: var(--trans);
+}
+.volt-input:focus { outline:none; border-color: var(--accent); }
+.volt-unit { font-size: 11px; color: var(--yellow); font-family: var(--font-mono); font-weight: 600; }
+
+.note-input {
+  width: 100%; padding: 7px 10px;
+  background: var(--surface2); border: 1px solid var(--border);
+  border-radius: var(--radius-sm); color: var(--text);
+  font-family: var(--font-sans); font-size: 12px;
+  resize: none; height: 56px; transition: var(--trans);
+}
+.note-input:focus { outline:none; border-color: var(--accent); }
+.note-input::placeholder { color: var(--text3); }
+
+/* ── SAVE STATUS (in toolbar) ── */
+.save-status {
+  font-size: 11px; color: var(--text3);
+  font-family: var(--font-mono);
+  white-space: nowrap;
+  display: flex; align-items: center; gap: 4px;
+}
+.save-status .dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--green); flex-shrink: 0;
+  opacity: 0; transition: opacity 0.3s;
+}
+.save-status.saved .dot { opacity: 1; }
+
+/* ── MODAL ── */
+.modal-bg {
+  position: fixed; inset:0; background: rgba(0,0,0,0.5);
+  z-index: 500; display: flex; align-items: center; justify-content: center;
+  padding: 20px; backdrop-filter: blur(4px);
+  opacity: 0; pointer-events: none; transition: opacity 0.25s;
+}
+.modal-bg.open { opacity:1; pointer-events:auto; }
+
+.modal {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 14px; padding: 28px 24px;
+  max-width: 420px; width:100%;
+  box-shadow: var(--shadow-lg);
+  transform: translateY(16px) scale(0.98);
+  transition: transform 0.25s;
+}
+.modal-bg.open .modal { transform: translateY(0) scale(1); }
+.modal h2 { font-size:17px; font-weight:700; margin-bottom:8px; }
+.modal p  { font-size:13px; color:var(--text2); margin-bottom:20px; line-height:1.6; }
+.modal-actions { display:flex; gap:8px; justify-content:flex-end; }
+
+/* ── TOAST ── */
+.toast {
+  position: fixed; bottom: 24px; left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  background: var(--text); color: var(--surface);
+  padding: 10px 20px; border-radius: var(--radius-pill);
+  font-size: 13px; font-weight: 600; z-index: 1000;
+  transition: all 0.35s cubic-bezier(0.34,1.56,0.64,1);
+  opacity: 0; pointer-events: none; white-space: nowrap;
+  box-shadow: var(--shadow-lg);
+}
+.toast.show { opacity:1; transform: translateX(-50%) translateY(0); }
+
+/* ── RESPONSIVE ── */
+@media (max-width:640px) {
+  .stats-row { grid-template-columns: repeat(2,1fr); }
+  .toolbar { gap:6px; }
+  .toolbar-spacer { display:none; }
+  .hdr-btn span.hb-txt { display:none; }
+  .brand-sub { display:none; }
+  .item-id { font-size:11px; }
+  .status-btn { padding:4px 10px; font-size:11px; min-width:44px; }
+}
+@media (max-width:400px) {
+  .stats-row { grid-template-columns: repeat(2,1fr); }
+  .stat-num { font-size:18px; }
+}
+</style>
+</head>
+<body data-theme="white">
+<div id="app">
+
+<!-- ── HEADER ── -->
+<header class="app-header">
+  <div class="header-inner">
+    <div class="brand">
+      <div class="brand-icon">💡</div>
+      <div>
+        <div class="brand-title">Emergency Light Checklist</div>
+        <div class="brand-sub">PREVENTIVE MAINTENANCE · MAKRO ST.11</div>
+      </div>
+    </div>
+    <div class="header-right">
+      <div class="theme-switcher" title="เปลี่ยนธีม">
+        <div class="theme-dot td-white active" data-t="white" onclick="setTheme('white',this)" title="White"></div>
+        <div class="theme-dot td-dark"  data-t="dark"  onclick="setTheme('dark',this)"  title="Dark"></div>
+        <div class="theme-dot td-blue"  data-t="blue"  onclick="setTheme('blue',this)"  title="Blue"></div>
+      </div>
+      <button class="hdr-btn" onclick="showReset()">🔄 <span class="hb-txt">รีเซ็ต</span></button>
+    </div>
+  </div>
+</header>
+
+<!-- ── PAGE WRAP ── -->
+<div class="page-wrap">
+
+  <!-- FORM -->
+  <div class="form-card">
+    <div class="form-card-title">ข้อมูลแบบฟอร์ม</div>
+    <div class="form-grid">
+      <div class="form-group">
+        <label>เดือน / Month</label>
+        <select id="fMonth">
+          <option value="มกราคม">มกราคม (Jan)</option>
+          <option value="กุมภาพันธ์">กุมภาพันธ์ (Feb)</option>
+          <option value="มีนาคม">มีนาคม (Mar)</option>
+          <option value="เมษายน">เมษายน (Apr)</option>
+          <option value="พฤษภาคม">พฤษภาคม (May)</option>
+          <option value="มิถุนายน">มิถุนายน (Jun)</option>
+          <option value="กรกฎาคม">กรกฎาคม (Jul)</option>
+          <option value="สิงหาคม" selected>สิงหาคม (Aug)</option>
+          <option value="กันยายน">กันยายน (Sep)</option>
+          <option value="ตุลาคม">ตุลาคม (Oct)</option>
+          <option value="พฤศจิกายน">พฤศจิกายน (Nov)</option>
+          <option value="ธันวาคม">ธันวาคม (Dec)</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>ปี พ.ศ.</label>
+        <input type="number" id="fYear" value="2568" min="2560" max="2580">
+      </div>
+      <div class="form-group">
+        <label>ตรวจสอบโดย (Check By)</label>
+        <input type="text" id="fCheckBy" placeholder="ชื่อผู้ตรวจ...">
+      </div>
+      <div class="form-group">
+        <label>อนุมัติโดย (Approved By)</label>
+        <input type="text" id="fApprovedBy" placeholder="SM.GA">
+      </div>
+      <div class="form-group">
+        <label>วันที่ตรวจสอบ</label>
+        <input type="date" id="fDate">
+      </div>
+      <div class="form-group">
+        <label>หมายเหตุทั่วไป (Remark)</label>
+        <input type="text" id="fRemark" placeholder="หมายเหตุ...">
+      </div>
+    </div>
+  </div>
+
+  <!-- STATS -->
+  <div class="stats-row">
+    <div class="stat-card">
+      <div class="stat-icon si-total">📋</div>
+      <div class="stat-body">
+        <div class="stat-num sn-total" id="sTotal">46</div>
+        <div class="stat-lbl">ทั้งหมด</div>
+      </div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon si-yes">✅</div>
+      <div class="stat-body">
+        <div class="stat-num sn-yes" id="sYes">0</div>
+        <div class="stat-lbl">ผ่าน (Yes)</div>
+      </div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon si-no">❌</div>
+      <div class="stat-body">
+        <div class="stat-num sn-no" id="sNo">0</div>
+        <div class="stat-lbl">ไม่ผ่าน (No)</div>
+      </div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon si-pend">⏳</div>
+      <div class="stat-body">
+        <div class="stat-num sn-pend" id="sPend">46</div>
+        <div class="stat-lbl">ยังไม่ตรวจ</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROGRESS -->
+  <div class="progress-card">
+    <div class="progress-label">ความคืบหน้า</div>
+    <div class="progress-bar"><div class="progress-fill" id="pFill" style="width:0%"></div></div>
+    <div class="progress-pct" id="pText">0 / 46</div>
+  </div>
+
+  <!-- TOOLBAR — filter left, save-status + action buttons right -->
+  <div class="toolbar">
+    <div class="filter-group">
+      <button class="filter-btn active" onclick="setFilter('all',this)">ทั้งหมด</button>
+      <button class="filter-btn" onclick="setFilter('yes',this)">✅ ผ่าน</button>
+      <button class="filter-btn" onclick="setFilter('no',this)">❌ ไม่ผ่าน</button>
+      <button class="filter-btn" onclick="setFilter('pending',this)">⏳ รอตรวจ</button>
+    </div>
+    <div style="flex:1"></div>
+    <div class="save-status" id="saveStatus">
+      <div class="dot"></div>
+      <span id="lastSaved"></span>
+    </div>
+    <button class="btn btn-pdf" onclick="exportPDF()">📄 Export PDF</button>
+    <button class="btn btn-save" onclick="saveData()">💾 บันทึก</button>
+  </div>
+
+  <!-- CHECKLIST -->
+  <div id="checklist"></div>
+
+</div><!-- /page-wrap -->
+
+</div><!-- /app -->
+
+<!-- MODAL RESET -->
+<div class="modal-bg" id="modalReset">
+  <div class="modal">
+    <h2>🔄 รีเซ็ตข้อมูล</h2>
+    <p>ต้องการล้างข้อมูลการตรวจสอบทั้งหมดใช่หรือไม่?<br>ข้อมูลที่บันทึกไว้จะถูกลบออก</p>
+    <div class="modal-actions">
+      <button class="btn btn-reset" onclick="closeModal('modalReset')">ยกเลิก</button>
+      <button class="btn btn-pdf" onclick="confirmReset()">รีเซ็ต</button>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<script type="module">
+/* ── DATA ── */
+const ITEMS = [
+  {id:'EM001',num:1,loc:'ห้อง GR'},
+  {id:'EM002',num:2,loc:'บันไดทางขึ้นห้องเครื่อง AHU'},
+  {id:'EM003',num:3,loc:'ห้อง AHU 5'},
+  {id:'EM004',num:4,loc:'ห้อง AHU 4'},
+  {id:'EM005',num:5,loc:'ห้อง AHU 3'},
+  {id:'EM006',num:6,loc:'ห้อง AHU 2'},
+  {id:'EM007',num:7,loc:'ทางเดินหน้าห้อง CHILLER'},
+  {id:'EM008',num:8,loc:'ห้อง CHILLER'},
+  {id:'EM009',num:9,loc:'ห้อง AHU 1'},
+  {id:'EM010',num:10,loc:'MDB'},
+  {id:'EM011',num:11,loc:'ประตูหนีไฟ No.2 แผนก E2E'},
+  {id:'EM012',num:12,loc:'เสาหน้าแผนกปลา 1'},
+  {id:'EM013',num:13,loc:'เสาหน้าแผนกปลา 2'},
+  {id:'EM014',num:14,loc:'เสาหน้าห้อง SPICY เครื่องเทศ'},
+  {id:'EM015',num:15,loc:'ประตูหนีไฟ No.2 แผนกเนื้อ'},
+  {id:'EM016',num:16,loc:'เสาหลังจุด Till Cashier No.1 ตัวที่1'},
+  {id:'EM017',num:17,loc:'เสาหลังจุด Till Cashier No.1 ตัวที่2'},
+  {id:'EM018',num:18,loc:'หน้าประตู Auto Door ATM ธนาคารกรุง'},
+  {id:'EM019',num:19,loc:'ทางออกภัตตาคาร'},
+  {id:'EM020',num:20,loc:'มุมนั่งทานข้าวใน ภัตตาคาร'},
+  {id:'EM021',num:21,loc:'เสาหน้าห้องการตลาด ตัวที่1'},
+  {id:'EM022',num:22,loc:'เสาหน้าห้องการตลาด ตัวที่2'},
+  {id:'EM023',num:23,loc:'เสาลวกช้อนครัว ภัตตราคาร'},
+  {id:'EM024',num:24,loc:'หน้าห้อง Engineer 90'},
+  {id:'EM025',num:25,loc:'ทางเดิน CANTEEN'},
+  {id:'EM026',num:26,loc:'ทางเดินห้อง ALC'},
+  {id:'EM027',num:27,loc:'หน้าห้อง AREA ชั้น2'},
+  {id:'EM028',num:28,loc:'ห้องน้ำพนักงาน ชาย'},
+  {id:'EM029',num:29,loc:'ห้องน้ำพนักงาน หญิง'},
+  {id:'EM030',num:30,loc:'ห้อง GENERATOR'},
+  {id:'EM031',num:31,loc:'ประตูหนีไฟ No.1 แผนก DF'},
+  {id:'EM032',num:32,loc:'ในห้อง Cash Room'},
+  {id:'EM033',num:33,loc:'ห้อง FIREPUMP'},
+  {id:'EM034',num:34,loc:'ห้องน้ำชั้น 2 ภัตตาคาร ชายตัวที่1'},
+  {id:'EM035',num:35,loc:'ห้องน้ำชั้น 2 ภัตตาคาร หญิง'},
+  {id:'EM036',num:36,loc:'E2E — มุมแผ่นตู้แช่เจล'},
+  {id:'EM037',num:37,loc:'E2E — Max.Bright CP-04 (1)'},
+  {id:'EM038',num:38,loc:'E2E — Max.Bright CP-04 (2)'},
+  {id:'EM039',num:39,loc:'บันไดทางขึ้นลง พนักงาน'},
+  {id:'EM040',num:40,loc:'บันไดหนีไฟ NO.3 ห้องประชุม'},
+  {id:'EM041',num:41,loc:'แคนทีน'},
+  {id:'EM042',num:42,loc:'ทางเดินหลังครัวภัตตาคาร ร้านที่10'},
+  {id:'EM043',num:43,loc:'ทางเดินหลังครัวภัตตาคาร ร้านที่ 6'},
+  {id:'EM044',num:44,loc:'ผนังทางเดินหลังห้องเย็น FF (ผัก)'},
+  {id:'EM045',num:45,loc:'ผนังทางเดินหลังห้องเย็น FF (เนื้อ)'},
+  {id:'EM046',num:46,loc:'O2O ผนังประตูหนีไฟ'},
+];
+
+const PAGES = [
+  {label:'PAGE 1 / 3 — EM001 ~ EM021', s:1,  e:21},
+  {label:'PAGE 2 / 3 — EM022 ~ EM043', s:22, e:43},
+  {label:'PAGE 3 / 3 — EM044 ~ EM046', s:44, e:46},
+];
+
+const KEY = 'em_checklist_st11_v2';
+let state = {};
+let filter = 'all';
+let currentTheme = 'white';
+
+function initState() {
+  ITEMS.forEach(it => { state[it.id] = { status:'pending', note:'', voltage:'' }; });
+}
+
+/* ── THEME ── */
+function setTheme(t, dotEl) {
+  currentTheme = t;
+  document.body.setAttribute('data-theme', t);
+  document.querySelectorAll('.theme-dot').forEach(d => d.classList.remove('active'));
+  if (dotEl) dotEl.classList.add('active');
+  localStorage.setItem(KEY + '_theme', t);
+}
+
+/* ── RENDER ── */
+function renderAll() {
+  const container = document.getElementById('checklist');
+  let html = '';
+  PAGES.forEach(pg => {
+    const items = ITEMS.filter(it => it.num >= pg.s && it.num <= pg.e && matchFilter(it));
+    if (!items.length) return;
+    html += `<div class="page-section-label">${pg.label}</div>`;
+    items.forEach(it => { html += cardHTML(it); });
+  });
+  if (!html) html = `<div style="text-align:center;color:var(--text3);padding:60px 0;font-size:14px;">ไม่พบรายการ</div>`;
+  container.innerHTML = html;
+  updateStats();
+}
+
+function matchFilter(it) {
+  if (filter === 'all') return true;
+  return state[it.id].status === filter;
+}
+
+function cardHTML(it) {
+  const s = state[it.id];
+  const sc = s.status === 'yes' ? 's-yes' : s.status === 'no' ? 's-no' : 's-pending';
+  const yOn = s.status === 'yes' ? 'on' : '';
+  const nOn = s.status === 'no'  ? 'on' : '';
+  const hasExp = s.note || s.voltage;
+  const expOpen = hasExp ? 'open' : '';
+  const expBtnOpen = hasExp ? 'open' : '';
+  return `
+<div class="item-card ${sc}" id="card-${it.id}">
+  <div class="item-row">
+    <div class="item-seq">${it.num}</div>
+    <div class="item-body">
+      <div class="item-id-row">
+        <span class="item-id">${it.id}</span>
+      </div>
+      <div class="item-task">Test Battery 30 นาที (ถอดปลั๊ก) + วัดแรงดัน 24 Vdc | Check &amp; Clean</div>
+      <div class="item-loc">${it.loc}</div>
+    </div>
+    <div class="item-controls">
+      <button class="status-btn sb-yes ${yOn}" onclick="setStatus('${it.id}','yes')">Yes</button>
+      <button class="status-btn sb-no  ${nOn}" onclick="setStatus('${it.id}','no')">No</button>
+      <button class="expand-btn ${expBtnOpen}" id="ebtn-${it.id}" onclick="toggleExpand('${it.id}')">▾</button>
+    </div>
+  </div>
+  <div class="item-expand ${expOpen}" id="exp-${it.id}">
+    <div class="expand-row">
+      <span class="exp-label">⚡ แรงดัน:</span>
+      <input class="volt-input" type="number" step="0.1" placeholder="24.0"
+        value="${s.voltage}" oninput="state['${it.id}'].voltage=this.value">
+      <span class="volt-unit">Vdc</span>
+    </div>
+    <textarea class="note-input" placeholder="หมายเหตุเพิ่มเติม..."
+      oninput="state['${it.id}'].note=this.value">${s.note}</textarea>
+  </div>
+</div>`;
+}
+
+function setStatus(id, st) {
+  state[id].status = st;
+  const card = document.getElementById('card-'+id);
+  if (!card) return;
+  card.className = 'item-card ' + (st==='yes'?'s-yes':st==='no'?'s-no':'s-pending');
+  card.querySelector('.sb-yes').classList.toggle('on', st==='yes');
+  card.querySelector('.sb-no').classList.toggle('on', st==='no');
+  updateStats();
+}
+
+function toggleExpand(id) {
+  const exp  = document.getElementById('exp-'+id);
+  const ebtn = document.getElementById('ebtn-'+id);
+  const isOpen = exp.classList.toggle('open');
+  ebtn.classList.toggle('open', isOpen);
+  ebtn.textContent = isOpen ? '▴' : '▾';
+}
+
+function updateStats() {
+  const yes  = ITEMS.filter(i=>state[i.id].status==='yes').length;
+  const no   = ITEMS.filter(i=>state[i.id].status==='no').length;
+  const pend = ITEMS.filter(i=>state[i.id].status==='pending').length;
+  const done = yes + no;
+  const total = ITEMS.length;
+  document.getElementById('sTotal').textContent = total;
+  document.getElementById('sYes').textContent   = yes;
+  document.getElementById('sNo').textContent    = no;
+  document.getElementById('sPend').textContent  = pend;
+  document.getElementById('pFill').style.width  = (done/total*100) + '%';
+  document.getElementById('pText').textContent  = done + ' / ' + total;
+}
+
+function setFilter(f, btn) {
+  filter = f;
+  document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  renderAll();
+}
+
+/* ── FIREBASE CONFIG ── */
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import { getDatabase, ref, set, get, onValue } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyB_93whvL1JGrTgcxvlmw5NMBAIJqjhlyY",
+  authDomain: "ga-st11.firebaseapp.com",
+  databaseURL: "https://ga-st11-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "ga-st11",
+  storageBucket: "ga-st11.firebasestorage.app",
+  messagingSenderId: "512894104764",
+  appId: "1:512894104764:web:2b43f6f18f4dd83dddccb9"
+};
+
+const fbApp = initializeApp(firebaseConfig);
+const db    = getDatabase(fbApp);
+const DB_PATH = 'checklists/st11_latest';
+
+/* ── SAVE — localStorage + Firebase ── */
+async function saveData() {
+  const data = {
+    items:      state,
+    checkBy:    document.getElementById('fCheckBy').value,
+    approvedBy: document.getElementById('fApprovedBy').value,
+    month:      document.getElementById('fMonth').value,
+    year:       document.getElementById('fYear').value,
+    date:       document.getElementById('fDate').value,
+    remark:     document.getElementById('fRemark').value,
+    savedAt:    new Date().toISOString(),
+    theme:      currentTheme
+  };
+
+  /* 1. localStorage (instant, offline-safe) */
+  localStorage.setItem(KEY, JSON.stringify(data));
+
+  /* 2. Firebase */
+  const now = new Date().toLocaleTimeString('th-TH');
+  try {
+    await set(ref(db, DB_PATH), data);
+    document.getElementById('lastSaved').textContent = '☁️ ' + now;
+    document.getElementById('saveStatus').classList.add('saved');
+    showToast('💾 บันทึกขึ้น Cloud เรียบร้อย · ' + now);
+  } catch(e) {
+    document.getElementById('lastSaved').textContent = '💾 ' + now + ' (local)';
+    showToast('⚠️ บันทึก Local แล้ว (ตรวจสอบ Internet)');
+  }
+}
+
+/* ── LOAD — Firebase first, fallback localStorage ── */
+async function loadSaved() {
+  /* Try Firebase first */
+  try {
+    const snap = await get(ref(db, DB_PATH));
+    if (snap.exists()) {
+      applyData(snap.val());
+      showToast('☁️ โหลดข้อมูลจาก Cloud เรียบร้อย');
+      return true;
+    }
+  } catch(e) { /* offline — fall through */ }
+
+  /* Fallback to localStorage */
+  const raw = localStorage.getItem(KEY);
+  if (!raw) return false;
+  try {
+    applyData(JSON.parse(raw));
+    showToast('📂 โหลดข้อมูล Local เรียบร้อย');
+    return true;
+  } catch(e) { return false; }
+}
+
+function applyData(d) {
+  if (d.items)      state = d.items;
+  if (d.checkBy)    document.getElementById('fCheckBy').value    = d.checkBy;
+  if (d.approvedBy) document.getElementById('fApprovedBy').value = d.approvedBy;
+  if (d.month)      document.getElementById('fMonth').value      = d.month;
+  if (d.year)       document.getElementById('fYear').value       = d.year;
+  if (d.date)       document.getElementById('fDate').value       = d.date;
+  if (d.remark)     document.getElementById('fRemark').value     = d.remark;
+  if (d.savedAt) {
+    const t = new Date(d.savedAt).toLocaleTimeString('th-TH');
+    document.getElementById('lastSaved').textContent = '☁️ ' + t;
+    document.getElementById('saveStatus').classList.add('saved');
+  }
+  if (d.theme) setTheme(d.theme, document.querySelector(`.theme-dot[data-t="${d.theme}"]`));
+}
+
+/* ── RESET ── */
+function showReset() { document.getElementById('modalReset').classList.add('open'); }
+function confirmReset() {
+  initState(); renderAll();
+  closeModal('modalReset');
+  showToast('🔄 รีเซ็ตข้อมูลเรียบร้อย');
+}
+function closeModal(id) { document.getElementById(id).classList.remove('open'); }
+document.getElementById('modalReset').addEventListener('click', function(e) {
+  if (e.target === this) closeModal('modalReset');
+});
+
+/* ── TOAST ── */
+let toastTmr;
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg; t.classList.add('show');
+  clearTimeout(toastTmr);
+  toastTmr = setTimeout(()=>t.classList.remove('show'), 2800);
+}
+
+/* ── PDF — A4 exactly 2 pages ── */
+function exportPDF() {
+  saveData();
+  const month      = document.getElementById('fMonth').value;
+  const year       = document.getElementById('fYear').value;
+  const checkBy    = document.getElementById('fCheckBy').value || '';
+  const approvedBy = document.getElementById('fApprovedBy').value || '';
+  const date       = document.getElementById('fDate').value || '';
+  const remark     = document.getElementById('fRemark').value || '';
+
+  const fmtDate = d => {
+    if (!d) return '......./......./.........';
+    const [y,m,dd] = d.split('-');
+    return `${dd}/${m}/${parseInt(y)+543}`;
+  };
+
+  /* ── Split items into 2 pages: 25 on page 1, 21 on page 2 ── */
+  const PAGE1 = ITEMS.slice(0, 25);   // EM001–EM025
+  const PAGE2 = ITEMS.slice(25, 46);  // EM026–EM046
+
+  const buildRows = (arr) => arr.map(it => {
+    const s = state[it.id];
+    const yCell = s.status==='yes' ? '<span class="chk yes">✓</span>' : '';
+    const nCell = s.status==='no'  ? '<span class="chk no">✗</span>'  : '';
+    const noteVal = s.note    || '';
+    const voltVal = s.voltage ? s.voltage+' Vdc' : '';
+    return `<tr>
+  <td class="tc mono">${it.num}</td>
+  <td class="mono bold blue">${it.id}</td>
+  <td>${'Test Battery 30 นาที (ถอดปลั๊ก) + วัดแรงดัน 24 Vdc'}</td>
+  <td class="tc2">Check &amp; Clean</td>
+  <td class="tc">${yCell}</td>
+  <td class="tc">${nCell}</td>
+  <td>${it.loc}</td>
+  <td class="tc2 mono">${voltVal}</td>
+  <td>${noteVal}</td>
+</tr>`;
+  }).join('');
+
+  const tableHead = `<thead><tr>
+  <th style="width:22px">#</th>
+  <th style="width:52px">รหัส</th>
+  <th>รายการ (Task)</th>
+  <th style="width:72px">วิธีการ</th>
+  <th style="width:30px;text-align:center">Yes</th>
+  <th style="width:30px;text-align:center">No</th>
+  <th style="width:148px">Location</th>
+  <th style="width:58px">แรงดัน</th>
+  <th>หมายเหตุ</th>
+</tr></thead>`;
+
+  const yes  = ITEMS.filter(i=>state[i.id].status==='yes').length;
+  const no   = ITEMS.filter(i=>state[i.id].status==='no').length;
+  const pend = ITEMS.filter(i=>state[i.id].status==='pending').length;
+
+  /* shared header block */
+  const headerHTML = (pageNum) => `
+<div class="top">
+  <div class="top-left">
+    <div class="top-title">💡 PREVENTIVE MAINTENANCE OF EMERGENCY LIGHT</div>
+    <div class="top-sub">แบบฟอร์มบำรุงรักษาระบบแสงสว่างฉุกเฉิน ประจำเดือน <b>${month}</b> พ.ศ.${year}</div>
+    <div class="top-sub">Unit Type: EMERGENCY LIGHT &nbsp;|&nbsp; Model: Max Bright C.E.E</div>
+  </div>
+  <div class="top-right">
+    <div class="badge">MAKRO ST.11</div>
+    <div class="top-date">วันที่: ${fmtDate(date)}</div>
+    <div class="page-num">หน้า ${pageNum} / 2</div>
+  </div>
+</div>`;
+
+  const win = window.open('','_blank');
+  win.document.write(`<!DOCTYPE html>
+<html lang="th"><head>
+<meta charset="UTF-8">
+<title>Emergency Light PM — MAKRO ST.11 · ${month} ${year}</title>
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+/* ── Reset ── */
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{width:210mm;background:#fff;}
+body{font-family:'Sarabun',sans-serif;font-size:9.5px;color:#0f172a;}
+
+/* ── Page setup ── */
+@page{size:A4 portrait;margin:8mm 9mm;}
+@media print{
+  html,body{width:auto;}
+  .page{page-break-after:always;}
+  .page:last-child{page-break-after:avoid;}
+}
+
+/* ── Page container ── */
+.page{
+  padding:0;
+  display:flex;flex-direction:column;
+}
+
+/* ── Header ── */
+.top{
+  display:flex;justify-content:space-between;align-items:flex-start;
+  border:1.5px solid #1e40af;border-radius:5px;
+  padding:7px 10px;margin-bottom:6px;
+  background:linear-gradient(135deg,#eff6ff 0%,#fff 60%);
+}
+.top-title{font-size:11px;font-weight:700;color:#1e40af;margin-bottom:2px;}
+.top-sub{font-size:9px;color:#475569;margin-top:1px;}
+.top-right{text-align:right;flex-shrink:0;margin-left:8px;}
+.badge{display:inline-block;background:#1e40af;color:#fff;padding:2px 10px;border-radius:3px;font-size:10px;font-weight:700;}
+.top-date{font-size:9px;color:#64748b;margin-top:3px;}
+.page-num{font-size:9px;color:#94a3b8;margin-top:2px;}
+
+/* ── Stats (only on page 1) ── */
+.stats{display:flex;gap:6px;margin-bottom:6px;}
+.sc{flex:1;border:1px solid #e2e8f0;border-radius:4px;padding:5px 8px;text-align:center;}
+.sc .n{font-size:15px;font-weight:700;font-family:monospace;line-height:1;}
+.sc .l{font-size:8.5px;color:#64748b;margin-top:1px;}
+.ok .n{color:#059669;} .ok{border-color:#a7f3d0;background:#f0fdf4;}
+.ng .n{color:#dc2626;} .ng{border-color:#fecaca;background:#fef2f2;}
+.pd .n{color:#d97706;} .pd{border-color:#fde68a;background:#fffbeb;}
+
+/* ── Table ── */
+table{width:100%;border-collapse:collapse;margin-bottom:6px;}
+thead tr{background:#1e40af;}
+th{padding:4px 5px;color:#fff;font-size:9px;font-weight:700;text-align:left;white-space:nowrap;}
+td{padding:3px 5px;border-bottom:1px solid #f1f5f9;font-size:9px;vertical-align:middle;line-height:1.35;}
+tr:nth-child(even) td{background:#f8fafc;}
+.tc{text-align:center;}
+.tc2{text-align:left;color:#475569;}
+.mono{font-family:monospace;}
+.bold{font-weight:700;}
+.blue{color:#1e40af;}
+.chk{font-size:13px;font-weight:700;line-height:1;}
+.chk.yes{color:#059669;}
+.chk.no{color:#dc2626;}
+
+/* ── Footer (signature + remark) — always on page 2 ── */
+.footer-block{margin-top:auto;padding-top:6px;}
+.footer{display:flex;gap:12px;margin-bottom:6px;}
+.fbox{flex:1;border:1px solid #e2e8f0;border-radius:4px;padding:8px 10px;}
+.fbox h3{font-size:8.5px;color:#64748b;text-transform:uppercase;letter-spacing:.06em;margin-bottom:3px;font-weight:700;}
+.sig{height:28px;border-bottom:1px solid #cbd5e1;margin-bottom:3px;}
+.fbox .name{font-size:11px;font-weight:700;color:#0f172a;height:22px;display:flex;align-items:flex-end;padding-bottom:2px;}
+.fbox small{font-size:8.5px;color:#94a3b8;}
+.rmk{border:1px solid #e2e8f0;border-radius:4px;padding:8px 10px;}
+.rmk h3{font-size:8.5px;color:#64748b;text-transform:uppercase;letter-spacing:.06em;margin-bottom:5px;font-weight:700;}
+.rl{height:20px;border-bottom:1px dashed #e2e8f0;margin-bottom:3px;font-size:9px;display:flex;align-items:flex-end;padding-bottom:1px;color:#334155;}
+</style>
+</head><body>
+
+<!-- ═══════════════ PAGE 1 ═══════════════ -->
+<div class="page">
+  ${headerHTML(1)}
+  <div class="stats">
+    <div class="sc"><div class="n">${ITEMS.length}</div><div class="l">ทั้งหมด</div></div>
+    <div class="sc ok"><div class="n">${yes}</div><div class="l">✓ ผ่าน</div></div>
+    <div class="sc ng"><div class="n">${no}</div><div class="l">✗ ไม่ผ่าน</div></div>
+    <div class="sc pd"><div class="n">${pend}</div><div class="l">— รอตรวจ</div></div>
+  </div>
+  <table>${tableHead}<tbody>${buildRows(PAGE1)}</tbody></table>
+</div>
+
+<!-- ═══════════════ PAGE 2 ═══════════════ -->
+<div class="page">
+  ${headerHTML(2)}
+  <table>${tableHead}<tbody>${buildRows(PAGE2)}</tbody></table>
+
+  <!-- FOOTER — ลายเซ็น + หมายเหตุ อยู่ท้ายหน้า 2 เสมอ -->
+  <div class="footer-block">
+    <div class="footer">
+      <div class="fbox">
+        <h3>ตรวจสอบโดย (Check By)</h3>
+        <div class="name">${checkBy}</div>
+        <div class="sig"></div>
+        <small>General Affair &nbsp;|&nbsp; วันที่: ${fmtDate(date)}</small>
+      </div>
+      <div class="fbox">
+        <h3>อนุมัติโดย (Approved By)</h3>
+        <div class="name">${approvedBy}</div>
+        <div class="sig"></div>
+        <small>SM.GA &nbsp;|&nbsp; วันที่: ${fmtDate(date)}</small>
+      </div>
+    </div>
+    <div class="rmk">
+      <h3>หมายเหตุ (Remark)</h3>
+      <div class="rl">${remark}</div>
+      <div class="rl"></div>
+      <div class="rl"></div>
+      <div class="rl"></div>
+    </div>
+  </div>
+</div>
+
+<script>window.onload=()=>window.print();<\/script>
+</body></html>`);
+  win.document.close();
+}
+
+/* ── INIT ── */
+document.addEventListener('DOMContentLoaded', async () => {
+  document.getElementById('fDate').value = new Date().toISOString().split('T')[0];
+  initState();
+  renderAll();
+  await loadSaved();
+  renderAll();
+});
+
+/* ── Expose to global scope for inline HTML onclick handlers ── */
+window.setTheme      = setTheme;
+window.showReset     = showReset;
+window.confirmReset  = confirmReset;
+window.closeModal    = closeModal;
+window.setFilter     = setFilter;
+window.setStatus     = setStatus;
+window.toggleExpand  = toggleExpand;
+window.saveData      = saveData;
+window.exportPDF     = exportPDF;
+</script>
+</body></html>
